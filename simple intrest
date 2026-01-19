@@ -1,0 +1,15 @@
+//simple intrest
+#include<stdio.h>
+int main()
+{
+    int p,n,r,simp;
+    printf("enter the principle:");
+    scanf("%d",&p);
+    printf("enter the no of years:");
+    scanf("%d",&n);
+    printf("enter the rate of intrest:");
+    scanf("%d",&r);
+    simp=p*n*r;
+    printf("simple intrest : %d \n",simp);
+    return 0;
+}
