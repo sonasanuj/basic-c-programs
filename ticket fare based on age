@@ -1,0 +1,14 @@
+#include<stdio.h>
+int main()
+{
+    int age;
+    printf("enter the age: \n");
+    scanf("%d",&age);
+    if(age>=60)
+        printf("fare = 5");
+    else if(age>=18 && age<=59)
+        printf("fare = 10");
+    else
+        printf("fare = 8");
+    return 0;
+}
