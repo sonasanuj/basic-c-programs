@@ -1,0 +1,40 @@
+//simple calculator
+#include<stdio.h>
+int main()
+{
+    char operator;
+    float n1,n2,result;
+    printf("SIMPLE CALCULATOR \n");
+    printf("enter an operator (+,-,*,/)");
+    scanf("%c",&operator);
+    printf("enter two number:");
+    scanf("%f%f",&n1,&n2);
+    switch(operator)
+    {
+        case'+':
+    result=n1+n2;
+    printf("result =%.2f \n",result);
+    break;
+    case'-':
+    result=n1-n2;
+    printf("result =%.2f \n",result);
+    break;
+    case'*':
+    result=n1/n2;
+    printf("result = %.2f \n",result);
+    break;
+    case'/':
+    if(n2!=0)
+    {
+        result=n1/n2;
+        printf("result =%.2f \n",result);
+    }
+    else
+        printf("ERROR");
+    break;
+    default:
+    printf("invalid input");
+    
+}
+    return 0;
+}
