@@ -1,0 +1,24 @@
+//fibonacii
+#include<stdio.h>
+int main()
+{
+    int n,first=0,second=1,fib,i=0;
+    printf("enter the number of terms: \n");
+    scanf("%d",&n);
+    while(i<=n)
+    {
+        if(i<=1)
+        {
+          fib=i;
+        }
+        else
+        {
+            fib=first+second;
+            first=second;
+            second=fib;
+        }
+        printf("%d",fib);
+        i++;
+    }
+    return 0;
+}
