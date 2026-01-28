@@ -1,0 +1,30 @@
+#include<stdio.h>
+
+int main()
+{
+    int ar[10], i, n;
+    int maxIndex = 0, minIndex = 0;
+
+    printf("enter the no of elements: ");
+    scanf("%d", &n);
+
+    printf("enter the array elements:\n");
+    for(i = 0; i < n; i++)
+    {
+        scanf("%d", &ar[i]);
+    }
+
+    for(i = 1; i < n; i++)
+    {
+        if(ar[i] > ar[maxIndex])
+            maxIndex = i;
+
+        if(ar[i] < ar[minIndex])
+            minIndex = i;
+    }
+
+    printf("\nMax element index = %d", maxIndex);
+    printf("\nMin element index = %d", minIndex);
+
+    return 0;
+}
