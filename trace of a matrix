@@ -1,0 +1,27 @@
+//transpose
+#include<stdio.h>
+int main()
+{
+    int mat[50][50];
+    int trace=0,i,j,r,c;
+    printf("enter the rows and coloumn:\n");
+    scanf("%d%d",&r,&c);
+    printf("enter the elements:\n");
+    for(i=0;i<r;i++)
+    {
+        for(j=0;j<c;j++)
+        {
+            scanf("%d",&mat[i][j]);
+        }
+    }
+    for(i=0;i<r;i++)
+    {
+        for(j=0;j<c;j++)
+        {
+            if(i==j)
+                trace=trace+mat[i][j];
+        }
+    }
+    printf("trace :%d",trace);
+    return 0;
+}
