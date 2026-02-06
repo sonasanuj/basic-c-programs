@@ -1,0 +1,33 @@
+//uppercase,lowercase ,digits,special characters in a string 
+#include <stdio.h>
+#include<string.h>
+int main()
+{
+  int i,upper=0,lower=0,special=0,digit=0;
+  char str[20];
+  printf("enter a string:");
+  scanf("%s",str);
+  for(i=0;str[i]!='\0';i++)
+  {
+  if(str[i]>='a' && str[i]<='z')
+  {
+    lower++;
+  }
+  else if(str[i]>='A' && str[i]<='Z')
+  {
+    upper++;
+  }
+  else if(str[i]>='0' && str[i]<='9')
+  {
+    digit++;
+  }
+  else
+     special++;
+  }
+  printf("no of upper case letters:%d",upper);
+  printf("no of lower case letters:%d",lower);
+  printf("no of special characters :%d",special);
+  printf("no of digits:%d",digit
+        );
+  return 0;
+}
