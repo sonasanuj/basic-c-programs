@@ -1,0 +1,20 @@
+#include<stdio.h>
+struct student
+{
+    char name[25];
+    int rollno;
+};
+struct student s[68];
+int main()
+{
+    int i;
+    for(i=0;i<68;i++)
+    {
+        scanf("%d%s",&s[i].rollno,s[i].name);
+    }
+    for(i=0;i<68;i++)
+    {
+        printf("%s%d\n",s[i].name,s[i].rollno);
+    }
+    return 0;
+}
