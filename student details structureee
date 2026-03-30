@@ -1,0 +1,157 @@
+#include <stdio.h>
+#include <string.h>
+
+#define SIZE 10
+#define SUBJECTS 6
+
+struct Student {
+    int rollno;
+    char name[50];
+    int marks[SUBJECTS];
+    float percentage;
+    char grade;
+};
+
+// Function to calculate grade
+char calculateGrade(float percentage) {
+    if (percentage >= 90) return 'S';
+    else if (percentage >= 80) return 'A';
+    else if (percentage >= 70) return 'B';
+    else if (percentage >= 60) return 'C';
+    else if (percentage >= 50) return 'D';
+    else return 'F';
+}
+
+// (a) Read details + calculate percentage & grade
+void readStudents(struct Student s[]) {
+    for (int i = 0; i < SIZE; i++) {
+        printf("\nEnter details of student %d\n", i + 1);
+
+        printf("Roll No: ");
+        scanf("%d", &s[i].rollno);
+
+        printf("Name: ");
+        scanf(" %[^\n]", s[i].name);
+
+        int total = 0;
+        printf("Enter marks of 6 subjects:\n");
+        for (int j = 0; j < SUBJECTS; j++) {
+            scanf("%d", &s[i].marks[j]);
+            total += s[i].marks[j];
+        }
+
+        s[i].percentage = total / 6.0;
+        s[i].grade = calculateGrade(s[i].percentage);
+    }
+}
+
+// Function to print one student
+void printStudent(struct Student s) {
+    printf("\nRoll No: %d", s.rollno);
+    printf("\nName: %s", s.name);
+    printf("\nMarks: ");
+    for (int i = 0; i < SUBJECTS; i++) {
+        printf("%d ", s.marks[i]);
+    }
+    printf("\nPercentage: %.2f", s.percentage);
+    printf("\nGrade: %c\n", s.grade);
+}
+
+// (b) Display by roll number
+void displayByRoll(struct Student s[]) {
+    int roll, found = 0;
+    printf("\nEnter Roll No to search: ");
+    scanf("%d", &roll);
+
+    for (int i = 0; i < SIZE; i++) {
+        if (s[i].rollno == roll) {
+            printStudent(s[i]);
+            found = 1;
+            break;
+        }
+    }
+
+    if (!found) {
+        printf("Student not found!\n");
+    }
+}
+
+// (c) Display all
+void displayAll(struct Student s[]) {
+    for (int i = 0; i < SIZE; i++) {
+        printStudent(s[i]);
+    }
+}
+
+// (d) Students with S grade in ALL subjects
+void displayAllSGrade(struct Student s[]) {
+    printf("\nStudents with S grade in ALL subjects:\n");
+
+    for (int i = 0; i < SIZE; i++) {
+        int allS = 1;
+
+        for (int j = 0; j < SUBJECTS; j++) {
+            if (s[i].marks[j] < 90) {
+                allS = 0;
+                break;
+            }
+        }
+
+        if (allS) {
+            printf("\nRoll No: %d | Name: %s | Grade: %c",
+                   s[i].rollno, s[i].name, s[i].grade);
+        }
+    }
+}
+
+// (e) Students who failed in any subject
+void displayFailed(struct Student s[]) {
+    printf("\nStudents who FAILED in any subject:\n");
+
+    for (int i = 0; i < SIZE; i++) {
+        int failed = 0;
+
+        for (int j = 0; j < SUBJECTS; j++) {
+            if (s[i].marks[j] < 50) {
+                failed = 1;
+                break;
+            }
+        }
+
+        if (failed) {
+            printf("\nRoll No: %d | Name: %s | Grade: %c",
+                   s[i].rollno, s[i].name, s[i].grade);
+        }
+    }
+}
+
+// MAIN FUNCTION
+int main() {
+    struct Student s[SIZE];
+    int choice;
+
+    readStudents(s);
+
+    do {
+        printf("\n\n===== MENU =====");
+        printf("\n1. Display by Roll No");
+        printf("\n2. Display All");
+        printf("\n3. Students with S in all subjects");
+        printf("\n4. Failed Students");
+        printf("\n5. Exit");
+        printf("\nEnter choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1: displayByRoll(s); break;
+            case 2: displayAll(s); break;
+            case 3: displayAllSGrade(s); break;
+            case 4: displayFailed(s); break;
+            case 5: printf("Exiting...\n"); break;
+            default: printf("Invalid choice!\n");
+        }
+
+    } while (choice != 5);
+
+    return 0;
+}
