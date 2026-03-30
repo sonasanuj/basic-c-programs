@@ -1,0 +1,50 @@
+#include <stdio.h>
+#include <string.h>
+
+int isAnagram(char a[], char b[])
+{
+    if(strlen(a) != strlen(b))
+        return 0;
+
+    for(int i = 0; a[i] != '\0'; i++)
+    {
+        int count1 = 0, count2 = 0;
+
+        for(int j = 0; a[j] != '\0'; j++)
+        {
+            if(a[i] == a[j]) count1++;
+            if(a[i] == b[j]) count2++;
+        }
+
+        if(count1 != count2)
+            return 0;
+    }
+
+    return 1;
+}
+
+int main()
+{
+    char a[50], b[50];
+    int ch;
+
+    do
+    {
+        printf("\n1.Check Anagram  2.Exit\n");
+        scanf("%d", &ch);
+
+        if(ch == 1)
+        {
+            printf("Enter 2 strings: ");
+            scanf("%s %s", a, b);
+
+            if(isAnagram(a, b))
+                printf("Anagram\n");
+            else
+                printf("Not Anagram\n");
+        }
+
+    } while(ch != 2);
+
+    return 0;
+}
